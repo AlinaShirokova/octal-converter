@@ -1,16 +1,38 @@
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        int decimalNumber = 21;
+        System.out.println("Десятичное число " + decimalNumber +
+                " равно восьмеричному числу " + toOctal(decimalNumber));
+        int octalNumber = 25;
+        System.out.println("Восьмеричное число " + octalNumber
+                + " равно десятичному числу " + toDecimal(octalNumber));
+    }
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+    public static int toOctal(int decimalNumber) {
+        int octalNumber = 0;
+        if (decimalNumber > 0) {
+            int i = 0;
+            while (decimalNumber != 0) {
+                octalNumber = (int) (octalNumber +
+                        (decimalNumber % 8) * Math.pow(10, i));
+                decimalNumber = decimalNumber / 8;
+                i++;
+            }
         }
+        return octalNumber;
+    }
+
+    public static int toDecimal(int octalNumber) {
+        int decimalNumber = 0;
+        if (octalNumber > 0) {
+            int i = 0;
+            while (octalNumber != 0) {
+                decimalNumber = (int) (decimalNumber +
+                        (octalNumber % 10) * Math.pow(8, i));
+                octalNumber = octalNumber / 10;
+                i++;
+            }
+        }
+        return decimalNumber;
     }
 }
